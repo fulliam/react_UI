@@ -1,4 +1,6 @@
-const Chevron = (props: any) => {
+import React from 'react';
+
+const Chevron = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       color="currentColor"

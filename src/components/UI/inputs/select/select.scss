@@ -1,5 +1,3 @@
-@import '../../../../assets/styles/collections/_variables.scss';
-
 $select-bg-color: $background-light;
 $select-border-color: $border-color;
 $select-bg-color-error: $error-color;
@@ -172,6 +170,22 @@ $select-box-shadow: 0 0 20px 0 $box-shadow-color;
       overflow: scroll;
       visibility: visible;
       opacity: 1;
+    }
+
+    .input {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+
+      input {
+        border: none;
+        border-bottom: 1px solid $select-list-border-color;
+        border-radius: 0;
+        cursor: pointer;
+      }
     }
 
     &__item {

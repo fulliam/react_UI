@@ -43,19 +43,51 @@ const TreeSelect: React.FC<TreeSelectProps> = ({
   const [filter, setFilter] = useState('');
   const [expandedNodes, setExpandedNodes] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
-  const listRef = useRef<HTMLDivElement>(null);
+
+  const treeRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLDivElement>(null);
+
+  const getAllDescendants = (node: TreeNode): string[] => {
+    let descendants: string[] = [];
+    if (node.children) {
+      node.children.forEach((child) => {
+        descendants.push(child.id);
+        descendants = descendants.concat(getAllDescendants(child));
+      });
+    }
+    return descendants;
+  };
 
   const handleSelect = (id: string, nodeDisabled?: boolean) => {
     if (nodeDisabled || disabled) return;
+
+    const node = findNodeById(data, id);
+    const descendants = node ? getAllDescendants(node) : [];
     const updatedSelected = selected.includes(id)
-      ? selected.filter((item) => item !== id)
-      : [...selected, id];
+      ? selected.filter((item) => ![id, ...descendants].includes(item))
+      : [...selected, id, ...descendants];
+
     setSelected(updatedSelected);
     onChange(updatedSelected);
   };
 
+  const findNodeById = (nodes: TreeNode[], id: string): TreeNode | undefined => {
+    for (const node of nodes) {
+      if (node.id === id) return node;
+      if (node.children) {
+        const found = findNodeById(node.children, id);
+        if (found) return found;
+      }
+    }
+  };
+
   const handleDocumentClick = (event: MouseEvent) => {
-    if (listRef.current && !listRef.current.contains(event.target as Node)) {
+    if (
+      treeRef.current &&
+      !treeRef.current.contains(event.target as Node) &&
+      inputRef.current &&
+      !inputRef.current.contains(event.target as Node)
+    ) {
       setOpen(false);
     }
   };
@@ -122,7 +154,9 @@ const TreeSelect: React.FC<TreeSelectProps> = ({
       className={`tree-select ${disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${big ? 'big' : ''} ${dark ? 'dark' : ''} ${full ? 'full' : ''}`}
     >
       {label && <label className={required ? 'required' : ''}>{label}</label>}
-      <div className="dropdown" onClick={toggleDropdown}>
+      <div ref={inputRef} className="dropdown" onClick={toggleDropdown}>
+        {' '}
+        {/* Используем inputRef */}
         <input
           type="text"
           placeholder={placeholder}
@@ -134,7 +168,7 @@ const TreeSelect: React.FC<TreeSelectProps> = ({
         <Chevron className={`chevron ${open ? 'open' : ''}`} />
       </div>
       {open && (
-        <div ref={listRef} className={`tree-dropdown-list ${open ? 'open' : ''}`}>
+        <div ref={treeRef} className={`tree-dropdown-list ${open ? 'open' : ''}`}>
           <div className="tree-list__item">{renderTree(data)}</div>
         </div>
       )}

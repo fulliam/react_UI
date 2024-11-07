@@ -1,5 +1,3 @@
-@import '../../../../assets/styles/collections/_variables.scss';
-
 $primary-button-bg: $primary-color;
 $primary-button-text: $primary-text-color;
 $primary-button-shadow: $primary-shadow;
@@ -11,6 +9,10 @@ $secondary-button-shadow: $secondary-shadow;
 $danger-button-bg: $danger-color;
 $danger-button-text: $danger-text-color;
 $danger-button-shadow: $danger-shadow;
+
+$tertiary-button-bg: $tertiary-color;
+$tertiary-button-text: $tertiary-text-color;
+$tertiary-button-shadow: $tertiary-shadow;
 
 $loader-color: $primary-text-color;
 $loader-border-color: rgba($primary-text-color, 0.2);
@@ -70,15 +72,49 @@ $loader-border-color: rgba($primary-text-color, 0.2);
     box-shadow: 0 10px 20px -10px $primary-button-shadow;
   }
 
+  &--outline-primary {
+    color: $primary-button-text;
+    border: 2px solid $primary-button-bg;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   &--secondary {
     color: $secondary-button-text;
     background-color: $secondary-button-bg;
     box-shadow: 0 10px 20px -10px $secondary-button-shadow;
   }
 
+  &--outline-secondary {
+    color: $secondary-button-text;
+    border: 2px solid $secondary-button-bg;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   &--danger {
     color: $danger-button-text;
     background-color: $danger-button-bg;
     box-shadow: 0 10px 20px -10px $danger-button-shadow;
+  }
+
+  &--outline-danger {
+    color: $danger-button-text;
+    border: 2px solid $danger-button-bg;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &--tertiary {
+    color: $tertiary-button-text;
+    background-color: $tertiary-button-bg;
+    box-shadow: 0 10px 20px -10px $tertiary-button-shadow;
+  }
+
+  &--outline-tertiary {
+    color: $tertiary-button-text;
+    border: 2px solid $tertiary-button-bg;
+    background-color: transparent;
+    box-shadow: none;
   }
 }

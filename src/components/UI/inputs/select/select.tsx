@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Chevron from '@/assets/icons/Chevron';
+import Input from '@/components/UI/inputs/base/base';
 import './select.scss';
 
 interface Option {
@@ -24,6 +25,7 @@ interface SelectProps {
   dark?: boolean;
   full?: boolean;
   keyToDisplay?: string;
+  enableFilter?: boolean;
   onSelect?: (item: Option | null) => void;
 }
 
@@ -41,12 +43,17 @@ const Select: React.FC<SelectProps> = ({
   big,
   dark,
   full,
-  keyToDisplay, // not work
+  keyToDisplay,
+  enableFilter = false,
   onSelect
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [currentInput, setCurrentInput] = useState<number | string | null>(value);
-  const listRef = useRef<HTMLDivElement>(null);
+  const [filterInput, setFilterInput] = useState<string>('');
+  const [filteredOptions, setFilteredOptions] = useState<Option[]>(options);
+
+  const selectRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (keyToDisplay && options.length > 0) {
@@ -54,6 +61,14 @@ const Select: React.FC<SelectProps> = ({
       setCurrentInput(foundItem ? foundItem.id : null);
     }
   }, [value, options, keyToDisplay]);
+
+  useEffect(() => {
+    setFilteredOptions(
+      options.filter((option) =>
+        option.name?.toString().toLowerCase().includes(filterInput.toLowerCase())
+      )
+    );
+  }, [filterInput, options]);
 
   const getDescription = (item: Option) => {
     if (!optionDescriptionParams) return '';
@@ -91,7 +106,12 @@ const Select: React.FC<SelectProps> = ({
   };
 
   const handleDocumentClick = (event: MouseEvent) => {
-    if (listRef.current && !listRef.current.contains(event.target as Node)) {
+    if (
+      selectRef.current &&
+      !selectRef.current.contains(event.target as Node) &&
+      inputRef.current &&
+      !inputRef.current.contains(event.target as Node)
+    ) {
       setOpen(false);
     }
   };
@@ -104,9 +124,9 @@ const Select: React.FC<SelectProps> = ({
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleDocumentClick);
+    document.addEventListener('mouseup', handleDocumentClick);
     return () => {
-      document.removeEventListener('mousedown', handleDocumentClick);
+      document.removeEventListener('mouseup', handleDocumentClick);
     };
   }, []);
 
@@ -116,7 +136,7 @@ const Select: React.FC<SelectProps> = ({
       onClick={(e) => e.stopPropagation()}
     >
       {label && <label className={required ? 'required' : ''}>{label}</label>}
-      <div className="input" onClick={toggleOpen}>
+      <div ref={inputRef} className="input" onClick={toggleOpen}>
         {options.find((i) => i.id === currentInput)?.image && (
           <img
             src={options.find((i) => i.id === currentInput)?.image}
@@ -132,23 +152,30 @@ const Select: React.FC<SelectProps> = ({
         />
         <Chevron className={`chevron ${open ? 'open' : ''}`} />
       </div>
-      {options && options.length > 0 ? (
-        <div ref={listRef} className={`list ${open ? 'open' : ''}`}>
-          {options.map((item) => (
-            <div
-              key={item.id}
-              className={`list__item ${currentInput === item.id ? 'selected' : ''} ${item.image ? 'fix-position' : ''}`}
-              onClick={() => handleChange(item.id, item)}
-            >
-              {item.image && <img src={item.image} alt={item.id} />}
-              <span className={item.image ? 'fix-position' : ''}>{item.name}</span>
-              {enableOptionDescription && <p>{getDescription(item)}</p>}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div ref={listRef} className={`list ${open ? 'open' : ''}`}>
-          <div className="list__item">Нет данных</div>
+      {open && (
+        <div ref={selectRef} className={`list ${open ? 'open' : ''}`}>
+          {enableFilter && (
+            <Input
+              placeholder="Поиск..."
+              value={filterInput}
+              onChange={(val: any) => setFilterInput(val)}
+            />
+          )}
+          {filteredOptions.length > 0 ? (
+            filteredOptions.map((item) => (
+              <div
+                key={item.id}
+                className={`list__item ${currentInput === item.id ? 'selected' : ''} ${item.image ? 'fix-position' : ''}`}
+                onClick={() => handleChange(item.id, item)}
+              >
+                {item.image && <img src={item.image} alt={item.id} />}
+                <span className={item.image ? 'fix-position' : ''}>{item.name}</span>
+                {enableOptionDescription && <p>{getDescription(item)}</p>}
+              </div>
+            ))
+          ) : (
+            <div className="list__item">Нет данных</div>
+          )}
         </div>
       )}
     </div>

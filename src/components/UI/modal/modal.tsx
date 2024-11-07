@@ -4,7 +4,7 @@ import './modal.scss';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title?: string;
+  title?: ReactNode;
   children: ReactNode;
   overlay?: boolean;
   position?:

@@ -1,0 +1,219 @@
+.page {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .page-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+  }
+
+  .scroll-controls {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      background: $primary-color;
+      border: 1px solid $primary-text-color;
+      border-radius: 50%;
+      color: $primary-text-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
+
+      &:nth-child(odd) {
+        svg {
+          position: relative;
+          top: -2px;
+          transform: rotateX(180deg);
+        }
+      }
+
+      &:nth-child(even) {
+        svg {
+          position: relative;
+          top: 3px;
+        }
+      }
+
+      svg {
+        width: 32px;
+        height: 32px;
+        color: $primary-text-color;
+      }
+    }
+  }
+}
+
+.demo-page {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $background-light;
+  transition: opacity 0.5s ease-in-out;
+
+  h1 {
+    text-align: center;
+    color: $text-color-middle;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: $background-light;
+    box-shadow: 0 4px 8px $box-shadow-color;
+    // border-radius: 12px;
+    // overflow: hidden;
+
+    thead {
+      background-color: $primary-color;
+      color: $primary-text-color;
+
+      th {
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        min-width: 150px;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $background-light, 10%;
+        }
+      }
+
+      td {
+        padding: 16px;
+        border: 1px solid $border-color;
+        text-align: left;
+        font-size: 14px;
+        min-width: 150px;
+        text-overflow: ellipsis;
+        color: $text-color-dark;
+
+        .table-btn {
+          background-color: transparent;
+          color: $text-color-middle;
+          border: 1px dashed $border-color;
+          padding: 8px 12px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.3s ease-out;
+
+          &:hover {
+            background-color: $background-dark;
+          }
+        }
+      }
+    }
+  }
+
+  @include sm {
+    h1 {
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 15px;
+          padding: 10px;
+          background-color: $background-light;
+          border-radius: 4px;
+
+          td {
+            display: block;
+            position: relative;
+            border: 0;
+
+            &:before {
+              content: attr(data-label);
+              position: absolute;
+              left: 16px;
+              width: 45%;
+              text-align: left;
+              font-weight: bold;
+              font-size: 14px;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include xs {
+    h1 {
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 15px;
+          padding: 10px;
+          background-color: $background-light;
+          border-radius: 4px;
+
+          td {
+            display: block;
+            position: relative;
+            border: 0;
+
+            &:before {
+              content: attr(data-label);
+              position: absolute;
+              left: 16px;
+              width: 45%;
+              text-align: left;
+              font-weight: bold;
+              font-size: 14px;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputMask } from '@react-input/mask';
 import Eye from '@/assets/icons/Eye';
 import CrossEye from '@/assets/icons/CrossEye';
@@ -63,16 +63,24 @@ const Input: React.FC<IInput> = ({
   const [isHide, setIsHide] = useState(true);
   const inputId = `input-${Math.random().toString(36).substr(2, 9)}`;
 
+  useEffect(() => {
+    setCurrentInput(value || '');
+  }, [value]);
+
   const toggleHide = () => setIsHide(!isHide);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setCurrentInput(newValue);
-    onChange && onChange(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
   const handleIncludeClick = () => {
-    clickInclude && clickInclude();
+    if (clickInclude) {
+      clickInclude();
+    }
   };
 
   return (
@@ -103,7 +111,7 @@ const Input: React.FC<IInput> = ({
             onChange={handleInputChange}
             id={inputId}
             maxLength={maxLength}
-            replacement={{ _: /\d/ }} // Пример замены символов, можно настроить под ваш случай
+            replacement={{ _: /\d/ }}
           />
         ) : (
           <input

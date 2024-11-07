@@ -1,0 +1,108 @@
+$select-list-background-color: $background-light;
+$select-list-item-color: $text-color-dark;
+$select-list-border-color: #dcdde1;
+$select-border-radius: 8px;
+$select-transition-duration: 0.2s;
+
+.dropdown {
+  position: relative;
+
+  &.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: $select-border-radius;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition:
+    box-shadow $select-transition-duration,
+    transform $select-transition-duration;
+  width: 100%;
+  background: transparent;
+  background-color: transparent;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+  }
+
+  &:hover {
+    transform: none !important;
+  }
+
+  &.open {
+    box-shadow: none;
+  }
+
+  &.primary {
+    background: transparent;
+    background-color: transparent;
+    color: $primary-color;
+    box-shadow: none;
+  }
+
+  &.secondary {
+    background: transparent;
+    background-color: transparent;
+    color: $secondary-color;
+    box-shadow: none;
+  }
+
+  &.danger {
+    background: transparent;
+    background-color: transparent;
+    color: $danger-color;
+    box-shadow: none;
+  }
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  width: 100%;
+  min-width: fit-content;
+  overflow: hidden;
+  border-radius: $select-border-radius;
+  border: 1px solid $select-list-border-color;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition:
+    opacity $select-transition-duration,
+    visibility $select-transition-duration,
+    transform $select-transition-duration;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $select-list-background-color;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__item {
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 120%;
+    color: $select-list-item-color;
+    white-space: nowrap;
+    transition: color $select-transition-duration;
+
+    &:hover,
+    &.selected {
+      color: $primary-color;
+    }
+  }
+}

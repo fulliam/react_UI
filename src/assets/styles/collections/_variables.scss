@@ -1,10 +1,14 @@
+$nyasha-sans: 'Nyasha Sans';
+
 // Общая палитра цветов
 $primary-color: var(--primary-color);
 $secondary-color: var(--secondary-color);
+$tertiary-color: var(--tertiary-color);
 $danger-color: var(--danger-color);
 
 $primary-text-color: var(--primary-text-color);
 $secondary-text-color: var(--secondary-text-color);
+$tertiary-text-color: var(--secondary-text-color);
 $danger-text-color: var(--danger-text-color);
 
 $background-light: var(--background-light);
@@ -18,6 +22,7 @@ $box-shadow-color: var(--box-shadow-color);
 
 $primary-shadow: var(--primary-shadow);
 $secondary-shadow: var(--secondary-shadow);
+$tertiary-shadow: var(--tertiary-shadow);
 $danger-shadow: var(--danger-shadow);
 
 $disabled-opacity: 0.35;
@@ -27,11 +32,13 @@ $error-color: rgb(255, 102, 102);
   // Светлая тема
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
+  --tertiary-color: #f1c40f;
   --danger-color: #e74c3c;
 
-  --primary-text-color: #fff;
-  --secondary-text-color: #fff;
-  --danger-text-color: #fff;
+  --primary-text-color: #0b0b0b;
+  --secondary-text-color: #0b0b0b;
+  --tertiary-text-color: #0b0b0b;
+  --danger-text-color: #0b0b0b;
 
   --background-light: #f9f9f9;
   --background-dark: #222222;
@@ -44,20 +51,23 @@ $error-color: rgb(255, 102, 102);
 
   --primary-shadow: rgba(37, 85, 232, 0.4);
   --secondary-shadow: rgba(46, 204, 113, 0.4);
+  --tertiary-shadow: rgba(196, 202, 10, 0.4);
   --danger-shadow: rgba(231, 76, 60, 0.4);
 }
 
 // Темная тема
 .dark-theme {
-  --primary-color: #2ecc71;
-  --secondary-color: #3498db;
+  --primary-color: #921d9a;
+  --secondary-color: #69ba22;
+  --tertiary-color: #3498db;
   --danger-color: #e74c3c;
 
-  --primary-text-color: #222;
+  --primary-text-color: #fff;
   --secondary-text-color: #fff;
+  --tertiary-text-color: #fff;
   --danger-text-color: #fff;
 
-  --background-light: #333;
+  --background-light: #181818;
   --background-dark: #111;
   --text-color-light: #ffffff;
   --text-color-middle: #ffffff;
@@ -66,7 +76,8 @@ $error-color: rgb(255, 102, 102);
   --border-color: #555555;
   --box-shadow-color: rgba(100, 100, 100, 0.1);
 
-  --primary-shadow: rgba(46, 204, 113, 0.4);
-  --secondary-shadow: rgba(37, 85, 232, 0.4);
+  --primary-shadow: rgba(186, 46, 204, 0.4);
+  --secondary-shadow: rgba(141, 232, 37, 0.4);
+  --tertiary-shadow: rgba(160, 160, 160, 0.4);
   --danger-shadow: rgba(231, 76, 60, 0.4);
 }

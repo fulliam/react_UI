@@ -1,4 +1,4 @@
-const Moon = (props: any) => {
+const Moon = () => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
@@ -8,7 +8,6 @@ const Moon = (props: any) => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
-      {...props}
     >
       <path
         stroke="currentColor"

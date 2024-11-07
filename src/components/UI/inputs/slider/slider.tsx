@@ -79,20 +79,23 @@ const RangeSlider: React.FC<SliderProps> = ({
         </>
       )}
       {singleRange && (
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={minVal}
-          onChange={(event) => {
-            const value = Math.min(Number(event.target.value), maxVal);
-            setMinVal(value);
-            minValRef.current = value;
-          }}
-          className={`thumb thumb--single`}
-          disabled={disabled}
-        />
+        <>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={minVal}
+            onChange={(event) => {
+              const value = Math.min(Number(event.target.value), maxVal);
+              setMinVal(value);
+              minValRef.current = value;
+            }}
+            className={`thumb thumb--single`}
+            disabled={disabled}
+          />
+        </>
       )}
+
       <div className="slider">
         <div className="slider__track" />
         <div ref={range} className="slider__range" />

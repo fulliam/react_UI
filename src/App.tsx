@@ -1,34 +1,12 @@
-// src/App.tsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Demos from '@/pages/Demos';
-import '@/assets/styles/index.scss';
-import Moon from '@/assets/icons/Moon';
-import Sun from '@/assets/icons/Sun';
+import ThemeToggle from '@/components/UI/themetoggle/themetoggle';
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<string>('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.add(savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark-theme' ? 'light' : 'dark-theme';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-  };
-
   return (
-    <div className={`App`}>
-      <button onClick={toggleTheme} className="theme-toggle">
-        {theme === 'dark-theme' ? <Sun /> : <Moon />}
-      </button>
+    <div className="App">
+      <ThemeToggle />
 
       <Routes>
         <Route path="/" element={<Demos />} />

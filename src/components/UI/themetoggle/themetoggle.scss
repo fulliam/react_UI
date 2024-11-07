@@ -1,0 +1,20 @@
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: $primary-color;
+  border-radius: 50%;
+  border: 1px solid $primary-text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: $primary-text-color;
+  }
+}

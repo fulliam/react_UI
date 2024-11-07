@@ -1,5 +1,3 @@
-@import '../../../../assets/styles/collections/_variables.scss';
-
 $range-slider-track-color: $placeholder-color;
 $range-slider-thumb-color: #f1f5f7;
 $range-slider-thumb-shadow-color: #ced4da;
@@ -34,6 +32,7 @@ $range-slider-values-color: $text-color-dark;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 15px 0;
 
   &:disabled,
   &.disabled {
@@ -91,7 +90,7 @@ $range-slider-values-color: $text-color-dark;
 .slider__right-value {
   color: $range-slider-values-color;
   font-size: $range-slider-values-font-size;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .slider__left-value {
