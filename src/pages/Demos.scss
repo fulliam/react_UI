@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding: 0 10px;
 
   .page-section {
     scroll-snap-align: start;
@@ -66,6 +67,8 @@
 
 .demo-page {
   margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,21 +79,30 @@
   h1 {
     text-align: center;
     color: $text-color-middle;
-    margin-bottom: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $border-color;
+    border-radius: 8px 8px 0 0;
+    background-color: $tertiary-color;
   }
 
   table {
     width: 100%;
-    border-collapse: collapse;
+    border-radius: 10px;
+    table-layout: fixed;
+    border-spacing: 0;
     margin: 0 auto;
     background-color: $background-light;
     box-shadow: 0 4px 8px $box-shadow-color;
-    // border-radius: 12px;
-    // overflow: hidden;
+    position: relative;
 
     thead {
-      background-color: $primary-color;
+      background-color: $tertiary-color;
       color: $primary-text-color;
+      outline: 1px solid $border-color;
+      outline-offset: -1px;
 
       th {
         padding: 12px;
@@ -98,25 +110,49 @@
         font-size: 16px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        min-width: 150px;
+        position: relative;
       }
     }
 
     tbody {
       tr {
         &:nth-child(even) {
-          background-color: $background-light, 10%;
+          background-color: rgba($background-light, 0.1);
+        }
+
+        &:first-child td {
+          border-top: none;
+        }
+
+        &:last-child td {
+          border-bottom: 1px solid $border-color;
+
+          &:first-child {
+            border-bottom-left-radius: 10px;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 10px;
+          }
         }
       }
 
       td {
         padding: 16px;
-        border: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
         text-align: left;
         font-size: 14px;
-        min-width: 150px;
         text-overflow: ellipsis;
         color: $text-color-dark;
+
+        &:first-child {
+          color: $secondary-color !important;
+        }
+
+        &:last-child {
+          border-right: 1px solid $border-color;
+        }
 
         .table-btn {
           background-color: transparent;
@@ -133,15 +169,23 @@
         }
       }
     }
+
+    th,
+    td {
+      width: calc(100% / var(--column-count));
+    }
   }
 
-  @include sm {
+  @include md {
     h1 {
       font-size: 16px;
     }
 
     table {
       width: 100%;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid $border-color;
+      box-shadow: none !important;
 
       thead {
         display: none;
@@ -158,7 +202,51 @@
           td {
             display: block;
             position: relative;
-            border: 0;
+            border: 0 !important;
+
+            &:before {
+              content: attr(data-label);
+              position: absolute;
+              left: 16px;
+              width: 45%;
+              text-align: left;
+              font-weight: bold;
+              font-size: 14px;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include sm {
+    h1 {
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid $border-color;
+      box-shadow: none !important;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 5px;
+          padding: 5px;
+          background-color: $background-light;
+          border-radius: 4px;
+
+          td {
+            display: block;
+            position: relative;
+            border: 0 !important;
 
             &:before {
               content: attr(data-label);
@@ -183,6 +271,9 @@
 
     table {
       width: 100%;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid $border-color;
+      box-shadow: none !important;
 
       thead {
         display: none;
@@ -191,15 +282,15 @@
       tbody {
         tr {
           display: block;
-          margin-bottom: 15px;
-          padding: 10px;
+          margin-bottom: 5px;
+          padding: 5px;
           background-color: $background-light;
           border-radius: 4px;
 
           td {
             display: block;
             position: relative;
-            border: 0;
+            border: 0 !important;
 
             &:before {
               content: attr(data-label);

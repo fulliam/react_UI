@@ -42,16 +42,23 @@ const MenuDemo: React.FC = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'start',
                       gap: '10px',
                       padding: '10px',
                       flexDirection: 'column',
                       height: '100%'
                     }}
                   >
+                    <h1>Menu Item 0</h1>
                     <h1>Menu Item 1</h1>
                     <h1>Menu Item 2</h1>
                     <h1>Menu Item 3</h1>
+                    <h1>Menu Item 4</h1>
+                    <h1>Menu Item 5</h1>
+                    <h1>Menu Item 6</h1>
+                    <h1>Menu Item 7</h1>
+                    <h1>Menu Item 8</h1>
+                    <h1>Menu Item 9</h1>
                   </div>
                 </Menu>
               </td>

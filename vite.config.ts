@@ -10,7 +10,8 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr({ svgrOptions: { icon: true } })],
-  base: './',
+  // base: './',
+  base: '/react_UI/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -21,7 +22,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/styles/index.scss";`
+        additionalData: `@import "@/assets/styles/index.scss";`,
+        silenceDeprecations: ['legacy-js-api']
       }
     }
   }

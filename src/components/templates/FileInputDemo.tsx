@@ -3,27 +3,27 @@ import DragAndDrop from '@/components/UI/inputs/file/file';
 
 const DragAndDropDemo: React.FC = () => {
   const [singleFile, setSingleFile] = useState<File | null>(null);
-  const [multipleFiles, setMultipleFiles] = useState<File[]>([]);
+  // const [multipleFiles, setMultipleFiles] = useState<File[]>([]);
 
   const handleSingleFileUpload = (file: File) => {
     setSingleFile(file);
   };
 
-  const handleMultipleFilesUpload = (files: File[]) => {
-    setMultipleFiles(files);
-  };
+  // const handleMultipleFilesUpload = (files: File[]) => {
+  //   setMultipleFiles(files);
+  // };
 
   const handleClearSingleFile = () => {
     setSingleFile(null);
   };
 
-  const handleClearMultipleFiles = () => {
-    setMultipleFiles([]);
-  };
+  // const handleClearMultipleFiles = () => {
+  //   setMultipleFiles([]);
+  // };
 
   return (
     <div className="demo-page">
-      <h1>Демонстрация возможностей компонента DragAndDrop</h1>
+      <h1>Демонстрация возможностей компонента DragAndDrop (lib, in development)</h1>
       <table>
         <thead>
           <tr>

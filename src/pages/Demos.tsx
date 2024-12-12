@@ -1,23 +1,22 @@
-import React, { useRef, useState } from 'react';
-import BaseInputDemo from '@/views/Demos/BaseInputDemo';
-import PhoneInputDemo from '@/views/Demos/PhoneInputDemo';
-import PinCodeInputDemo from '@/views/Demos/PinCodeInputDemo';
-import TextareaDemo from '@/views/Demos/TextareaDemo';
-import SelectDemo from '@/views/Demos/SelectDemo';
-import BaseButtonDemo from '@/views/Demos/BaseButtonDemo';
-import ButtonSelectDemo from '@/views/Demos/ButtonSelectDemo';
-import RangeSliderDemo from '@/views/Demos/RangeSliderDemo';
-import SwitchDemo from '@/views/Demos/SwitchDemo';
-import BaseCheckboxDemo from '@/views/Demos/BaseCheckboxDemo';
-import TabsDemo from '@/views/Demos/TabsDemo';
-import TooltipDemo from '@/views/Demos/TooltipDemo';
-import ModalDemo from '@/views/Demos/ModalDemo';
-import MenuDemo from '@/views/Demos/MenuDemo';
-import FileInputDemo from '@/views/Demos/FileInputDemo';
-import TreeSelectDemo from '@/views/Demos/TreeSelectDemo';
-import IconsDemo from '@/views/Demos/IconsDemo';
+import React, { useRef, /* useState */ } from 'react';
+import BaseInputDemo from '@/components/templates/BaseInputDemo';
+import PhoneInputDemo from '@/components/templates/PhoneInputDemo';
+import PinCodeInputDemo from '@/components/templates/PinCodeInputDemo';
+import TextareaDemo from '@/components/templates/TextareaDemo';
+import SelectDemo from '@/components/templates/SelectDemo';
+import BaseButtonDemo from '@/components/templates/BaseButtonDemo';
+import ButtonSelectDemo from '@/components/templates/ButtonSelectDemo';
+import RangeSliderDemo from '@/components/templates/RangeSliderDemo';
+import SwitchDemo from '@/components/templates/SwitchDemo';
+import BaseCheckboxDemo from '@/components/templates/BaseCheckboxDemo';
+import TabsDemo from '@/components/templates/TabsDemo';
+import TooltipDemo from '@/components/templates/TooltipDemo';
+import ModalDemo from '@/components/templates/ModalDemo';
+import MenuDemo from '@/components/templates/MenuDemo';
+import FileInputDemo from '@/components/templates/FileInputDemo';
+import TreeSelectDemo from '@/components/templates/TreeSelectDemo';
+import IconsDemo from '@/components/templates/IconsDemo';
 import './Demos.scss';
-import Chevron from '@/assets/icons/Chevron';
 
 const Demos: React.FC = () => {
   const sections = [
@@ -37,17 +36,17 @@ const Demos: React.FC = () => {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null)
     // useRef<HTMLDivElement>(null)
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const scrollToSection = (index: number) => {
-    if (index >= 0 && index < sections.length) {
-      sections[index]?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setCurrentIndex(index);
-    }
-  };
+  // const scrollToSection = (index: number) => {
+  //   if (index >= 0 && index < sections.length) {
+  //     sections[index]?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     setCurrentIndex(index);
+  //   }
+  // };
 
   return (
     <div className="page">
@@ -72,14 +71,14 @@ const Demos: React.FC = () => {
           {index === 16 && <IconsDemo />}
         </div>
       ))}
-      <div className="scroll-controls">
+      {/* <div className="scroll-controls">
         <button onClick={() => scrollToSection(currentIndex - 1)}>
           <Chevron />
         </button>
         <button onClick={() => scrollToSection(currentIndex + 1)}>
           <Chevron />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

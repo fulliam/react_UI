@@ -1,12 +1,6 @@
 const SwitchDisabled = () => {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 21 21"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

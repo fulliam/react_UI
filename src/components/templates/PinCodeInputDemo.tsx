@@ -3,7 +3,7 @@ import PinCode from '@/components/UI/inputs/pin/pin';
 
 const PinCodeInputDemo: React.FC = () => {
   const [isPinValid, setIsPinValid] = useState<boolean | null>(null);
-  const correctPinCode = '123456';
+  const correctPinCode = '123';
 
   const handlePinCodeValidation = (isValid: boolean) => {
     setIsPinValid(isValid);
@@ -22,7 +22,7 @@ const PinCodeInputDemo: React.FC = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Пин-код (123456)</td>
+            <td>Пин-код (123)</td>
             <td>
               <PinCode
                 correctPinCode={correctPinCode}

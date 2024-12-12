@@ -60,7 +60,16 @@ const IconsDemo: React.FC = () => {
         >
           {icons.map((icon) => (
             <tr key={icon.name}>
-              <td style={{ border: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{icon.component}</td>
+              <td
+                style={{
+                  border: 0,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                {icon.component}
+              </td>
             </tr>
           ))}
         </tbody>

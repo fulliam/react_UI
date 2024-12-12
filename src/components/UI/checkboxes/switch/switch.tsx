@@ -46,9 +46,9 @@ const Switcher: React.FC<ISwitcherProps> = ({
     >
       <div className="switch__icon">
         {isActive ? (
-          <SwitchActive className="untouchable" />
+          <SwitchActive />
         ) : (
-          <SwitchDisabled className="untouchable" />
+          <SwitchDisabled />
         )}
       </div>
     </div>

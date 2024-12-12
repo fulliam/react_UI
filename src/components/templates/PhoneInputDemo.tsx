@@ -27,7 +27,7 @@ const PhoneInputDemo: React.FC = () => {
             <td>
               <PhoneInput onPhoneChange={handleChangePhone} />
             </td>
-            <td>{phoneError || 'Готово к отправке'}</td>
+            <td>{phone}, {phoneError || 'Готово к отправке'}</td>
           </tr>
         </tbody>
       </table>

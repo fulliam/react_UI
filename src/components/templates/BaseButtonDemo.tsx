@@ -5,9 +5,9 @@ const BaseButtonDemo: React.FC = () => {
   const [asyncActionStatus, setAsyncActionStatus] = useState<string | null>(null);
 
   const handleAsyncAction = async () => {
-    setAsyncActionStatus('Выполняется действие опасности...');
+    setAsyncActionStatus('Выполняется действие...');
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    setAsyncActionStatus('Опасное действие завершено!');
+    setAsyncActionStatus('Действие завершено!');
   };
 
   const handleSyncClick = () => {
@@ -32,6 +32,7 @@ const BaseButtonDemo: React.FC = () => {
             <td>
               <Button label="Обычный клик" theme="primary" onClick={handleSyncClick} />
             </td>
+            <td></td>
           </tr>
 
           <tr>

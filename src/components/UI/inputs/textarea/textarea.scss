@@ -43,8 +43,10 @@ $textarea-sublabel-color: $text-color-dark;
   textarea {
     padding: 10px 9px;
     height: 80px;
-    border: 1px solid var(--textarea-border, $textarea-border-color);
-    border-radius: 6px;
+    border: none;
+    outline: 1px solid var(--textarea-border, $textarea-border-color);
+    outline-offset: -2px;
+    border-radius: 8px;
     resize: none;
     font-weight: 400;
     font-size: 14px;

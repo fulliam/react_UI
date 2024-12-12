@@ -11,7 +11,7 @@ const PinCode: React.FC<PinCodeProps> = ({ correctPinCode, onPinCodeValidated })
   const [pinCode, setPinCode] = useState('');
 
   useEffect(() => {
-    if (pinCode.length === 6) {
+    if (pinCode.length === 3) {
       const isValid = pinCode === correctPinCode;
       setIsPinCodeValid(isValid);
       onPinCodeValidated(isValid);
@@ -22,13 +22,14 @@ const PinCode: React.FC<PinCodeProps> = ({ correctPinCode, onPinCodeValidated })
   const handlePinChange = (value: string) => {
     setPinCode(value);
     setIsPinCodeValid(true);
+    console.log(isPinCodeValid);
   };
 
   return (
     <ReactCodeInput
       name="pinCode"
       type="password"
-      fields={6}
+      fields={3}
       onChange={handlePinChange}
       value={pinCode}
       inputMode="numeric"

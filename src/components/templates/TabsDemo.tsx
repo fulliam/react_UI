@@ -41,8 +41,7 @@ const TabsDemo: React.FC = () => {
           <tr>
             <th>Тип</th>
             <th>Компонент</th>
-            <th>Статус активной вкладки:</th>
-            <th>Дополнительно:</th>
+            <th>Статус вкладки:</th>
           </tr>
         </thead>
         <tbody>
@@ -71,8 +70,9 @@ const TabsDemo: React.FC = () => {
                 preventFunction={asyncPreventFunction}
               />
             </td>
-            <td>{selectedTabSecondary}</td>
-            <td>{asyncMessage}</td>
+            <td>
+              {selectedTabSecondary}, {asyncMessage}
+            </td>
           </tr>
 
           <tr>
@@ -85,8 +85,7 @@ const TabsDemo: React.FC = () => {
                 onChangeTab={handleTabChangeDanger}
               />
             </td>
-            <td>{selectedTabDanger}</td>
-            <td>Отключено</td>
+            <td>{selectedTabDanger}, Tab2 Отключен</td>
           </tr>
         </tbody>
       </table>
