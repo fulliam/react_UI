@@ -9,7 +9,7 @@ const App: React.FC = () => {
       <ThemeToggle />
 
       <Routes>
-        <Route path="/" element={<Demos />} />
+        <Route path="/react_UI" element={<Demos />} />
       </Routes>
     </div>
   );
